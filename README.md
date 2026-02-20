@@ -1,93 +1,167 @@
-# Phase 2 Code Challenge: Plantsy
+🌱 Plantsy – Plant Shop (React + Vite)
 
-## Demo
+A simple plant shop application built with React and Vite that allows users to:
 
-Use this gif as an example of how the app should work.
+View all plants from a backend API
 
-![Demo GIF](./demo.gif)
+Add new plants
 
-## Instructions
+Mark plants as out of stock
 
-Welcome to Plantsy! You've been tasked with building out some features for the
-admin side of a plant store. The designers have put together the components and
-CSS. Now it's up to you to bring the features to life by adding stateful logic
-as well as persisting data to the backend via our API.
+Search/filter plants by name
 
-Your job will be to make our app work according to the user stories you will
-find the [Deliverables](#Deliverables) section.
+This project demonstrates React fundamentals including state management, props, controlled forms, conditional rendering, and working with a REST API.
 
-## Setup
+## Features
 
-1. Run `npm install` in your terminal.
-2. Run `npm run server`. This will run your backend on port `6001`.
-3. In a new terminal, run `npm run dev`.
+✅ Render all plants on page load
+✅ Add a new plant (POST to backend + update UI)
+✅ Toggle plant stock status (In Stock / Out of Stock)
+✅ Filter plants using a search input
+✅ Fully passing test suite
 
-Make sure to open [http://localhost:6001/plants](http://localhost:6001/plants)
-in the browser to verify that your backend is working before you proceed!
+🛠 Tech Stack
 
-## Endpoints
+React
 
-The base URL for your backend is: `http://localhost:6001`
+Vite
 
-## Deliverables
+JSON Server (mock backend)
 
-As a user:
+Vitest + Testing Library
 
-1. When the app starts, I can see all plants.
-2. I can add a new plant to the page by submitting the form.
-3. I can mark a plant as "sold out".
-4. I can search for plants by their name and see a filtered list of plants.
+## Project Structure
 
-### Endpoints for Core Deliverables
+plantshop-cr-vite/
+│
+├── src/
+│ ├── components/
+│ │ ├── App.jsx
+│ │ ├── Header.jsx
+│ │ ├── PlantPage.jsx
+│ │ ├── PlantList.jsx
+│ │ ├── PlantCard.jsx
+│ │ ├── NewPlantForm.jsx
+│ │ └── Search.jsx
+│ │
+│ ├── **tests**/
+│ ├── main.jsx
+│ └── index.css
+│
+├── db.json
+├── package.json
+└── README.md
 
-#### GET /plants
+## Installation & Setup
 
-Example Response:
+1️⃣ Clone the repository
+git clone <your-repo-url>
+cd plantshop-cr-vite
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Aloe",
-    "image": "./images/aloe.jpg",
-    "price": 15.99
-  },
-  {
-    "id": 2,
-    "name": "ZZ Plant",
-    "image": "./images/zz-plant.jpg",
-    "price": 25.98
-  }
-]
-```
+2️⃣ Install dependencies
+npm install
 
-#### POST `/plants`
+3️⃣ Start the backend (JSON Server)
+npx json-server --watch db.json --port 6001
 
-Required Headers:
+Backend will run at:
 
-```js
-{
-  "Content-Type": "application/json"
-}
-```
+http://localhost:6001/plants
 
-Request Object:
+4️⃣ Start the frontend (Vite)
+npm run dev
 
-```json
-{
-  "name": "string",
-  "image": "string",
-  "price": number
-}
-```
+App will run at:
 
-Example Response:
+http://localhost:5173
 
-```json
-{
-  "id": 1,
-  "name": "Aloe",
-  "image": "./images/aloe.jpg",
-  "price": 15.99
-}
-```
+5️⃣ Run Tests
+npm test
+
+All test suites should pass.
+
+## Application Behavior
+
+🔹 Render Plants on Load
+
+Plants are fetched from:
+
+http://localhost:6001/plants
+
+On load, each plant is initialized with:
+
+inStock: true
+
+🔹 Add New Plant
+
+Submitting the form:
+
+Sends a POST request to the backend
+
+Updates frontend state immediately
+
+New plant defaults to In Stock
+
+🔹 Toggle Stock Status
+
+Clicking the button:
+
+Switches between:
+
+In Stock
+
+Out of Stock
+
+Updates UI dynamically using React state
+
+🔹 Search Functionality
+
+The search bar:
+
+Filters plants by name
+
+Is case-insensitive
+
+Updates in real-time
+
+## Testing
+
+The project includes automated tests that verify:
+
+Plants render correctly on startup
+
+Plants are not hardcoded
+
+New plants are added correctly
+
+Stock status toggles correctly
+
+Search filtering works
+
+Run tests with:
+
+npm test
+
+## Learning Objectives
+
+This project demonstrates:
+
+React state management (useState)
+
+Side effects with useEffect
+
+Controlled form inputs
+
+Conditional rendering
+
+Lifting state up
+
+Immutable state updates
+
+Working with REST APIs
+
+Passing frontend test suites
+
+👨‍💻 Author
+
+Developed as part of a React code challenge, code completed by Mark Warunge
