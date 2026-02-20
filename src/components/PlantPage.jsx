@@ -3,6 +3,7 @@ import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
 
+
 function PlantPage() {
   const [plants, setPlants] = useState([]);
   const [search, setSearch] = useState("");
@@ -29,7 +30,7 @@ function PlantPage() {
     })
       .then((res) => res.json())
       .then((plant) => {
-        setPlants([...plants, plant]);
+        setPlants([...plants, { ...plant, inStock: true }]);
       });
   }
 
